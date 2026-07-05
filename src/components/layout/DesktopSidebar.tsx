@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import NavItem from "@/components/ui/NavItem";
 import { logout } from "@/lib/actions/auth";
 import { LogOutIcon } from "@/components/icons";
@@ -10,13 +9,11 @@ export default function DesktopSidebar() {
   return (
     <aside className="py-6 px-6 h-screen w-56 bg-white shadow-md fixed flex flex-col justify-between">
       <div>
-        <Image
-          src="/logo-BM.svg"
-          width={150}
-          height={150}
-          alt="Logo-BM"
-          className="pb-4"
-        />
+        <div className="pb-4">
+          <span className="text-2xl font-bold tracking-tight">
+            <span className="text-blue-600">Store</span>IQ
+          </span>
+        </div>
         <div className="flex flex-col gap-4">
           {MAIN_NAV_LINKS.map((link) => {
             const Icon = link.icon;

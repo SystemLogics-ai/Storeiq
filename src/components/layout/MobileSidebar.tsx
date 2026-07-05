@@ -2,7 +2,6 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
 import { logout } from "@/lib/actions/auth";
 import NavItem from "@/components/ui/NavItem";
 import { CloseIcon, LogOutIcon } from "@/components/icons";
@@ -40,12 +39,9 @@ export default function MobileSidebar({
         <div className="h-full flex flex-col overflow-y-auto p-6">
           <div className="flex flex-col flex-grow">
             <div className="flex items-center justify-between pb-4">
-              <Image
-                src="/logo-BM.svg"
-                width={120}
-                height={120}
-                alt="Logo-BM"
-              />
+              <span className="text-2xl font-bold tracking-tight">
+                <span className="text-blue-600">Store</span>IQ
+              </span>
               <button
                 onClick={() => setIsOpen(false)}
                 className="p-2"

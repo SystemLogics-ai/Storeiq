@@ -82,9 +82,9 @@ export const ORDER_STATUSES = [
 ];
 
 export const PRODUCT_CATEGORIES = [
-  { label: "Electronics", value: "electronics" },
-  { label: "Clothing", value: "clothing" },
-  { label: "Home & Furniture", value: "home" },
-  { label: "Beauty & Health", value: "beauty" },
-  { label: "Sports & Outdoors", value: "sports" },
+  { label: "Produce", value: "produce" },
+  { label: "Dairy", value: "dairy" },
+  { label: "Dry Goods & Pantry", value: "dry-goods" },
+  { label: "Meat & Seafood", value: "meat-seafood" },
+  { label: "Beverages", value: "beverages" },
 ];
