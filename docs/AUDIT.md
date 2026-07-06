@@ -111,3 +111,32 @@ The RPCs assume these tables exist (created by `supabase/migrations/0001_initial
 - `suppliers`, `customers`
 
 All tables are multi-tenant: every row is scoped by `user_id` (Supabase Auth UUID).
+
+---
+
+## Known Deferred Issues (Pre-Production)
+
+### AUTH-1 — Signup inserts into `public.users` manually, not via trigger
+**File:** `src/lib/actions/auth.ts:67-73`
+**Status:** Deferred — workaround in place (email confirmation disabled)
+
+After `supabase.auth.signUp()`, the code immediately inserts the new user into
+`public.users` using the same client. This fails whenever Supabase email
+confirmation is enabled, because no session exists yet (`auth.uid()` is null),
+and the RLS policy on `public.users` rejects the insert.
+
+**Current workaround:** Email confirmation is disabled in Supabase Auth settings
+(Authentication → Providers → Email → "Confirm email" = OFF). This gives
+`signUp()` an immediate session, making the insert succeed.
+
+**Before real production / multi-user launch, implement Option B:**
+1. In `supabase.auth.signUp()`, pass `display_name` as user metadata:
+   ```ts
+   options: { data: { name: display_name } }
+   ```
+2. Add a `SECURITY DEFINER` trigger on `auth.users` that auto-inserts into
+   `public.users` using `new.id`, `new.email`, `new.raw_user_meta_data->>'name'`.
+3. Remove the manual `.from("users").insert(...)` call from `signup()`.
+
+This pattern works regardless of whether email confirmation is on or off, and
+eliminates the RLS timing issue entirely.
