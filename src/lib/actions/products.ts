@@ -166,7 +166,7 @@ export async function updateProduct(
     return { success: false, message: `Update failed: ${error.message}` };
   }
 
-  if (oldProduct.product_image) {
+  if (imageFile && imageFile instanceof File && imageFile.size > 0 && oldProduct.product_image) {
     await deleteProductImage(oldProduct.product_image);
   }
 

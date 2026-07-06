@@ -66,8 +66,8 @@ export const FOOTER_NAV_LINKS: NavLink[] = [
 
 export const PAYMENT_METHODS = [
   { label: "Cash", value: "Cash" },
+  { label: "Card", value: "Card" },
   { label: "Transfer", value: "Transfer" },
-  { label: "QRIS", value: "QRIS" },
 ];
 
 export const PAYMENT_STATUSES = [

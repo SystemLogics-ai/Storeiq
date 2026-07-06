@@ -65,22 +65,7 @@ export function formatCurrencyShort(amount: number | string): string {
  */
 export function sanitizePhoneNumber(phone: string): string {
   if (!phone) return "";
-
-  const cleaned = phone.replace(/[()\s-]/g, "");
-
-  if (cleaned.startsWith("+")) {
-    return cleaned.substring(1);
-  }
-
-  if (cleaned.startsWith("08")) {
-    return "62" + cleaned.substring(1);
-  }
-
-  if (cleaned.startsWith("8") && cleaned.length > 8) {
-    return "62" + cleaned;
-  }
-
-  return cleaned;
+  return phone.replace(/[()\s\-+]/g, "");
 }
 
 /**
@@ -96,20 +81,17 @@ export function sanitizePhoneNumber(phone: string): string {
 export function formatDisplayPhoneNumber(
   phone: string | number | null
 ): string {
-  const phoneStr = String(phone || "");
+  const phoneStr = String(phone || "").replace(/\D/g, "");
 
-  if (phoneStr.startsWith("62")) {
-    return `+62 ${phoneStr.substring(2)}`;
+  if (phoneStr.length === 10) {
+    return `(${phoneStr.substring(0, 3)}) ${phoneStr.substring(3, 6)}-${phoneStr.substring(6)}`;
   }
 
-  if (phoneStr.startsWith("1") && phoneStr.length === 11) {
-    return `+1 (${phoneStr.substring(1, 4)}) ${phoneStr.substring(
-      4,
-      7
-    )}-${phoneStr.substring(7)}`;
+  if (phoneStr.length === 11 && phoneStr.startsWith("1")) {
+    return `+1 (${phoneStr.substring(1, 4)}) ${phoneStr.substring(4, 7)}-${phoneStr.substring(7)}`;
   }
 
-  return `+${phoneStr}`;
+  return phoneStr;
 }
 
 /**

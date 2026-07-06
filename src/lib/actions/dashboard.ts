@@ -55,7 +55,7 @@ export async function getDashboardStats(period: string = "monthly") {
       order:orders!inner(status)
     `
     )
-    .in("orders.status", ["Pending", "Shipped"]);
+    .in("order.status", ["Pending", "Shipped"]);
 
   const toBeReceived =
     incomingItems?.reduce((sum, item) => sum + item.quantity, 0) || 0;
