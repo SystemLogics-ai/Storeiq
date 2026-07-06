@@ -45,7 +45,7 @@ export default function ProfitChart({ data }: { data: ProfitChartData[] }) {
                 boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)",
               }}
               formatter={(value: number) =>
-                `Rp ${value.toLocaleString("id-ID")}`
+                `$${value.toLocaleString("en-US")}`
               }
             />
             <Area

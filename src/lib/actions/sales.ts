@@ -104,9 +104,7 @@ export async function deleteSale(saleId: number): Promise<FormState> {
   }
 
   const { error: deleteError } = await supabase
-    .from("sales")
-    .delete()
-    .eq("id", saleId);
+    .rpc("delete_sale", { p_sale_id: saleId });
 
   if (deleteError) {
     console.error("Delete Error:", deleteError.message);

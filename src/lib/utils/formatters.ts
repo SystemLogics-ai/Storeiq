@@ -13,14 +13,14 @@ export function formatCurrency(amount: number | string): string {
     typeof amount === "string" ? parseFloat(amount) : amount;
 
   if (isNaN(numericAmount)) {
-    return "Rp 0";
+    return "$0";
   }
 
-  const formatter = new Intl.NumberFormat("id-ID", {
+  const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
-    currency: "IDR",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
+    currency: "USD",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
   });
 
   return formatter.format(numericAmount);
@@ -38,12 +38,12 @@ export function formatCurrencyShort(amount: number | string): string {
     typeof amount === "string" ? parseFloat(amount) : amount;
 
   if (isNaN(numericAmount)) {
-    return "Rp 0";
+    return "$0";
   }
 
-  const formatter = new Intl.NumberFormat("id-ID", {
+  const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
-    currency: "IDR",
+    currency: "USD",
     notation: "compact",
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
@@ -156,7 +156,7 @@ export function formatToLocalPhone(phone: string | number | null): string {
 export function formatNumber(value: string): string {
   const rawValue = value.replace(/\D/g, "");
   if (rawValue === "") return "";
-  return new Intl.NumberFormat("id-ID").format(Number(rawValue));
+  return new Intl.NumberFormat("en-US").format(Number(rawValue));
 }
 
 /**

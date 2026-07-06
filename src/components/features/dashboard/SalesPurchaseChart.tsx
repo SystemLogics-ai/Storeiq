@@ -60,7 +60,7 @@ export default function SalesPurchaseChart({ data }: { data: ChartData[] }) {
             <Tooltip
               cursor={{ fill: "transparent" }}
               contentStyle={{ borderRadius: "8px", border: "none", boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)" }}
-              formatter={(value: number) => `Rp ${value.toLocaleString("id-ID")}`}
+              formatter={(value: number) => `$${value.toLocaleString("en-US")}`}
             />
             <Legend iconType="circle" wrapperStyle={{ paddingTop: "20px" }} />
             <Bar dataKey="purchase" name="Purchase" fill="#EF4444" radius={[4, 4, 0, 0]} barSize={12} />

@@ -94,7 +94,7 @@ export default function SaleRow({
             disabled={isPending}
           />
         ) : (
-          new Date(sale.sale_date).toLocaleDateString("id-ID")
+          new Date(sale.sale_date).toLocaleDateString("en-US")
         )}
       </td>
 

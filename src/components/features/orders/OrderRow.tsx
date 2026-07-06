@@ -101,7 +101,7 @@ export default function OrderRow({
             disabled={isSaving || isDeleting}
           />
         ) : order.expected_delivery_date ? (
-          new Date(order.expected_delivery_date).toLocaleDateString("id-ID")
+          new Date(order.expected_delivery_date).toLocaleDateString("en-US")
         ) : (
           "N/A"
         )}

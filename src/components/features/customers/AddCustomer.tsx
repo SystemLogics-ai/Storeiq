@@ -90,7 +90,7 @@ export default function AddCustomer({
             name="customer_name"
             label="Customer Name"
             type="text"
-            placeholder="e.g., Andi Budaya"
+            placeholder="e.g., StoreIQ — Little Havana"
             required
           />
 
@@ -99,7 +99,7 @@ export default function AddCustomer({
             name="address"
             label="Address Customer"
             type="text"
-            placeholder="e.g., Jl. Abadi Jaya"
+            placeholder="e.g., 1430 SW 8th St, Miami, FL 33135"
             required
           />
 
@@ -108,7 +108,7 @@ export default function AddCustomer({
             name="contact_number"
             label="Contact Number"
             type="number"
-            placeholder="e.g., 081234567890"
+            placeholder="e.g., (305) 111-0001"
             required
           />
         </form>

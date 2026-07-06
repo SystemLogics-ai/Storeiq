@@ -88,7 +88,7 @@ const AddSupplier = ({ onOrderChange }: { onOrderChange: () => void }) => {
             name="supplier_name"
             label="Supplier Name"
             type="text"
-            placeholder="e.g., PT. Stok Abadi"
+            placeholder="e.g., Fresh Farms Produce Co."
             required
           />
 
@@ -97,7 +97,7 @@ const AddSupplier = ({ onOrderChange }: { onOrderChange: () => void }) => {
             name="address"
             label="Address Supplier"
             type="text"
-            placeholder="e.g., Jl. Stok Abadi"
+            placeholder="e.g., 1200 NW 22nd Ave, Miami, FL 33125"
             required
           />
 
@@ -106,7 +106,7 @@ const AddSupplier = ({ onOrderChange }: { onOrderChange: () => void }) => {
             name="contact_number"
             label="Contact Number"
             type="number"
-            placeholder="e.g., 081234567890"
+            placeholder="e.g., (305) 234-5678"
             required
           />
 
@@ -115,7 +115,7 @@ const AddSupplier = ({ onOrderChange }: { onOrderChange: () => void }) => {
             name="purchase_link"
             label="Purchase Link"
             type="text"
-            placeholder="e.g., https://tokopedia.com/..."
+            placeholder="e.g., https://supplier-website.com"
           />
         </form>
       </Modal>

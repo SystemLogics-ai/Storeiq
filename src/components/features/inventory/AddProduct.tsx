@@ -132,7 +132,7 @@ export default function AddProduct({
             id="name"
             name="product_name"
             type="text"
-            placeholder="e.g., Long Sleeve Shirt"
+            placeholder="e.g., Plátanos Maduros"
             required
           />
           <LabeledInput
@@ -140,7 +140,7 @@ export default function AddProduct({
             id="type"
             name="product_type"
             type="text"
-            placeholder="e.g., Men's Apparel"
+            placeholder="e.g., Produce"
             required
           />
           <LabeledSelect
@@ -173,7 +173,7 @@ export default function AddProduct({
             id="priceBuy"
             name="buy_price"
             type="number"
-            placeholder="e.g., 75000"
+            placeholder="e.g., 0.99"
             min={0}
             required
           />
@@ -182,7 +182,7 @@ export default function AddProduct({
             id="priceSell"
             name="sell_price"
             type="number"
-            placeholder="e.g., 149000"
+            placeholder="e.g., 1.79"
             min={0}
             required
           />
