@@ -55,30 +55,18 @@ export async function signup(
     };
   }
 
-  const { data, error } = await supabase.auth.signUp({
+  const { error } = await supabase.auth.signUp({
     email,
     password,
+    options: { data: { name: display_name } },
   });
 
   if (error) {
     return { success: "", error: error.message };
   }
 
-  const { error: dbError } = await supabase.from("users").insert([
-    {
-      id: data.user?.id,
-      name: display_name,
-      email: data.user?.email,
-    },
-  ]);
-
-  if (dbError) {
-    console.error("public.users insert failed:", JSON.stringify(dbError));
-    return { success: "", error: "Error saving user to database." };
-  }
-
   return {
-    success: "Account created successfully! Please check your email to verify.",
+    success: "Account created successfully! You can now log in.",
     error: "",
   };
 }
