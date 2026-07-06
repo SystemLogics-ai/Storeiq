@@ -73,6 +73,7 @@ export async function signup(
   ]);
 
   if (dbError) {
+    console.error("public.users insert failed:", JSON.stringify(dbError));
     return { success: "", error: "Error saving user to database." };
   }
 
