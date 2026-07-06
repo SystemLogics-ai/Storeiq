@@ -1,7 +1,7 @@
 "use client";
 import CustomerTable from "@/components/features/customers/CustomerTable";
 import AddCustomer from "@/components/features/customers/AddCustomer";
-import { useState } from "react";
+import { useState, Suspense } from "react";
 
 export default function CustomersPage() {
   const [refreshKey, setRefreshKey] = useState(0);
@@ -20,10 +20,12 @@ export default function CustomersPage() {
           </div>
         </div>
         <div className="pt-2">
-          <CustomerTable
-            refreshKey={refreshKey}
-            onOrderChange={triggerRefresh}
-          />
+          <Suspense fallback={null}>
+            <CustomerTable
+              refreshKey={refreshKey}
+              onOrderChange={triggerRefresh}
+            />
+          </Suspense>
         </div>
       </div>
     </div>

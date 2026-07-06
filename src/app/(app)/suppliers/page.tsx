@@ -1,7 +1,7 @@
 "use client";
 import SupplierTable from "@/components/features/suppliers/SupplierTable";
 import AddSupplier from "@/components/features/suppliers/AddSupplier";
-import { useState } from "react";
+import { useState, Suspense } from "react";
 
 export default function SuppliersPage() {
   const [refreshKey, setRefreshKey] = useState(0);
@@ -20,10 +20,12 @@ export default function SuppliersPage() {
           </div>
         </div>
         <div className="pt-2">
-          <SupplierTable
-            refreshKey={refreshKey}
-            onOrderChange={triggerRefresh}
-          />
+          <Suspense fallback={null}>
+            <SupplierTable
+              refreshKey={refreshKey}
+              onOrderChange={triggerRefresh}
+            />
+          </Suspense>
         </div>
       </div>
     </div>

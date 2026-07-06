@@ -3,6 +3,7 @@ import { getAllProductsForSelect } from "@/lib/actions/products";
 import { getAllSuppliers } from "@/lib/actions/suppliers";
 import OverallOrders from "@/components/features/orders/OverallOrders";
 import { getOverallOrderStats } from "@/lib/actions/orders";
+import { Suspense } from "react";
 
 export default async function OrdersPage() {
   const [products, suppliers, stats] = await Promise.all([
@@ -26,7 +27,9 @@ export default async function OrdersPage() {
         pendingValue={orderStats.pending_value}
         completed30dCount={orderStats.completed_30d_count}
       />
-      <OrderClientWrapper products={products} suppliers={suppliers} />
+      <Suspense fallback={null}>
+        <OrderClientWrapper products={products} suppliers={suppliers} />
+      </Suspense>
     </div>
   );
 }

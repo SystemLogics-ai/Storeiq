@@ -3,6 +3,7 @@ import OverallSales from "@/components/features/sales/OverallSales";
 import { getAllProductsForSelect } from "@/lib/actions/products";
 import { getAllCustomers } from "@/lib/actions/customers";
 import { getOverallSalesStats } from "@/lib/actions/sales";
+import { Suspense } from "react";
 
 export default async function SalesPage() {
   const [products, customers, stats] = await Promise.all([
@@ -26,7 +27,9 @@ export default async function SalesPage() {
         totalTransactions={salesStats.total_transactions}
         todayRevenue={salesStats.today_revenue}
       />
-      <SaleClientWrapper products={products} customers={customers} />
+      <Suspense fallback={null}>
+        <SaleClientWrapper products={products} customers={customers} />
+      </Suspense>
     </div>
   );
 }

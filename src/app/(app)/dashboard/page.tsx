@@ -1,5 +1,6 @@
 import { getDashboardStats } from "@/lib/actions/dashboard";
 import DashboardClientWrapper from "@/components/features/dashboard/DashboardClientWrapper";
+import { Suspense } from "react";
 
 export default async function DashboardPage({
   searchParams,
@@ -22,5 +23,9 @@ export default async function DashboardPage({
     charts: dashboardData.charts ?? [],
   };
 
-  return <DashboardClientWrapper data={safeData} />;
+  return (
+    <Suspense fallback={null}>
+      <DashboardClientWrapper data={safeData} />
+    </Suspense>
+  );
 }

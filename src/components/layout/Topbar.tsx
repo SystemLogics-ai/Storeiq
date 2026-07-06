@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { HamburgerIcon } from "@/components/icons";
 import GlobalSearch from "@/components/ui/GlobalSearch";
 import UserDropdown from "@/components/features/topbar/UserDropdown";
@@ -50,7 +50,9 @@ export default function Topbar({ onMenuClick }: TopbarProps) {
       </button>
 
       <div className="relative flex-1 md:w-1/2 max-w-2xl">
-        <GlobalSearch />
+        <Suspense fallback={null}>
+          <GlobalSearch />
+        </Suspense>
       </div>
 
       <div className="flex items-center gap-3 md:gap-6">

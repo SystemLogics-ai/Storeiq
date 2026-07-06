@@ -3,6 +3,7 @@ import ProfitChart from "@/components/features/reports/ProfitChart";
 import ReportsHeader from "@/components/features/reports/ReportsHeader";
 import StatsOverview from "@/components/features/reports/StatsOverview";
 import CategoryPerformanceTable from "@/components/features/reports/CategoryPerformanceTable";
+import { Suspense } from "react";
 
 export default async function ReportsPage({
   searchParams,
@@ -24,7 +25,9 @@ export default async function ReportsPage({
   return (
     <div className="flex flex-col gap-3 md:mr-3">
       <div className="flex flex-col gap-3">
-        <ReportsHeader />
+        <Suspense fallback={null}>
+          <ReportsHeader />
+        </Suspense>
         <StatsOverview summary={data.summary} />
       </div>
       <ProfitChart data={data.chartData} />

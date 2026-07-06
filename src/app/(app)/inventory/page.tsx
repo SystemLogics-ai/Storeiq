@@ -7,6 +7,7 @@ import {
 import { getAllSuppliers } from "@/lib/actions/suppliers";
 import InventoryClientWrapper from "@/components/features/inventory/InventoryClientWrapper";
 import OverallInventory from "@/components/features/inventory/OverallInventory";
+import { Suspense } from "react";
 
 export default async function InventoryPage() {
   const [totalResult, categoryResult, valueResult, stockResult, suppliers] =
@@ -35,7 +36,9 @@ export default async function InventoryPage() {
         lowStockCount={data.lowStockCount}
         noStockCount={data.noStockCount}
       />
-      <InventoryClientWrapper suppliers={suppliers}/>
+      <Suspense fallback={null}>
+        <InventoryClientWrapper suppliers={suppliers}/>
+      </Suspense>
     </div>
   );
 }
