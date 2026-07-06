@@ -67,11 +67,13 @@ yarn install
 To ensure the application functions correctly, you must set up the necessary tables and storage buckets in your Supabase project.
 
 #### A. Database Schema
-The complete database schema (tables, relations, and types) is available in the [`schema.sql`](./schema.sql) file.
+The complete database schema (tables, relations, and types) is available in [`supabase/migrations/0001_initial_schema.sql`](./supabase/migrations/0001_initial_schema.sql).
+RPC functions required for core features are in [`supabase/functions/0002_rpcs.sql`](./supabase/functions/0002_rpcs.sql).
+See [`docs/SETUP.md`](./docs/SETUP.md) for the full setup walkthrough.
 **Quick Setup:**
 1. Open your Supabase Dashboard.
 2. Go to the **SQL Editor**.
-3. Copy the content of [`schema.sql`](./schema.sql).
+3. Run `supabase/migrations/0001_initial_schema.sql`, then `supabase/functions/0002_rpcs.sql`.
 4. Paste and click **Run**.
 
 #### B. Storage Buckets
